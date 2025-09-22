@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PWA 10 SEP 2025</title>
+  </head>
+  <body>
+    <h1>Hola</h1>
+    <img src="hola.jpg" alt="" />
+    <div id="contenido"></div>
+    <div>
+      <a href="javascipt:void(0)" onclick="exhibirLineas()">Exibir Lineas</a>
+      <br />
+      <canvas
+        id="Lienzo"
+        width="400"
+        height="300"
+        style="border: 1px solid#000000"
+      >
+      </canvas>
+    </div>
+    <script async src="lib1.js"></script>
+    <script async src="lib2.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(function (registro) {
+            console.log("Registro del SW satisfactorio: ", registro.scope);
+          })
+          .catch(function (err) {
+            console.log("Registro del SW fallido: ", err);
+          });
+      }
+      const params = new URLSearchParams(window.location.search);
+      const n = params.get("n");
+      const d = params.get("d");
+      console.log("Fraccion: ", n, "/", d);
+    </script>
+  </body>
+</html>
